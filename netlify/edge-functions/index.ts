@@ -1,12 +1,18 @@
-import { Hono } from 'https://deno.land/x/hono/mod.ts'
-import { handle } from 'https://deno.land/x/hono/adapter/netlify/mod.ts'
+import { Hono } from "https://deno.land/x/hono/mod.ts";
+import { handle } from "https://deno.land/x/hono/adapter/netlify/mod.ts";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/country', (c) =>
+app.get("/", (c) =>
   c.json({
-    message: 'Hello Netlify!',
+    message: "Hello Netlify!",
   })
-)
+);
 
-export default handle(app)
+app.get("/foobar", (c) =>
+  c.json({
+    message: "Hello Foobar!",
+  })
+);
+
+export default handle(app);
